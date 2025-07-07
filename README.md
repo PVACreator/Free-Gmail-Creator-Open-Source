@@ -22,6 +22,20 @@ Accounts can log in automatically in bulk Gmail, Facebook, Instagram, Twitter an
 Account warmup Feature
 Create unique role presets for each account — customize behavior, preferences, and interaction styles to warmup accounts.
 
+Highlights
+
+Free and Open Source on GitHub
+  Fully open under the MIT License for anyone to use, modify, and share.
+
+Command-Line (CMD) Mode
+  Lightweight design with a simplified control library and minimal plugins. Easy to use without heavy dependencies.
+
+No WebDriver or Playwright Required
+  Unlike traditional automation tools, this project does not use Selenium, WebDriver, or Playwright.
+
+Bypasses Standard Automation Detection 
+  This approach is designed to avoid common browser automation detection mechanisms, making it harder to identify as automated activity.
+
 Requirements
 
 - Windows
