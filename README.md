@@ -4,8 +4,12 @@ A free, open-source tool for automating Gmail account creation, shared with the 
 
 License
 
-This project is licensed under the "MIT License".  
-You are free to use, modify, and distribute it, even for commercial purposes.
+License
+
+This project is open source under the MIT License (see [LICENSE] for full text).
+
+© 2025 PVACreator. Free to use, modify, and distribute with attribution.
+
 
 Requirements
 
