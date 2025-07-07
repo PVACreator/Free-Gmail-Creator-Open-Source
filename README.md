@@ -75,4 +75,9 @@ Pull requests are welcome! If you have improvements or bug fixes, feel free to s
 
 Contact
 
-For questions, please contact +86 137 0946 2144
+For questions, please contact 
+Contact Us
+
+Email: contact@whitehatbox.com
+WhatsApp: +86 137 0946 2144
+Telegram: @pvacreatorsell
