@@ -4,12 +4,23 @@ A free, open-source tool for automating Gmail account creation, shared with the 
 
 License
 
-License
-
 This project is open source under the MIT License (see [LICENSE] for full text).
 
 © 2025 PVACreator. Free to use, modify, and distribute with attribution.
 
+Features and Advantages
+
+Batch Import Thousands of Accounts
+Import thousands of accounts at once (Manage Multiple Gmail, Facebook, Instagram, Twitter and TikTok Accounts in Free Account Manager)
+
+Batch Fingerprint and Proxy Binding
+Automatically assign unique fingerprints and proxies to large account batches.
+
+Batch Auto-Login & Status Check
+Accounts can log in automatically in bulk Gmail, Facebook, Instagram, Twitter and TikTok and verify their login status.
+
+Account warmup Feature
+Create unique role presets for each account — customize behavior, preferences, and interaction styles to warmup accounts.
 
 Requirements
 
