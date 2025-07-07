@@ -1,0 +1,1628 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChromeController</name>
+    </assembly>
+    <members>
+        <member name="T:ChromeController.Chrome">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.#ctor">
+            <summary>
+            默认构造函数
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.Guid">
+            <summary>
+            对象guid
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.BrowserProcess">
+            <summary>
+            启动后的浏览器主进程
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.CurrentWindowPtr">
+            <summary>
+            当前浏览器窗体句柄
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.Port">
+            <summary>
+            通信端口
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.RemoteDebugPort">
+            <summary>
+            远程调试端口
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.UserDataDir">
+            <summary>
+            UserDataDir缓存目录
+            </summary>
+        </member>
+        <member name="F:ChromeController.Chrome.PreferencesPath">
+            <summary>
+            配置文件路径
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.WaitScanCommand">
+            <summary>
+            等待扫描的命令
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.WaitBackCommand">
+            <summary>
+            等待执行结果的命令
+            </summary>
+        </member>
+        <member name="P:ChromeController.Chrome.CommandExecuteTimeout">
+            <summary>
+            执行超时时间
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.Init(System.String,System.String,System.String[0:,0:])">
+            <summary>
+            初始并启动Chrome
+            </summary>
+            <param name="browser_path">Chrome路径</param>
+            <param name="user_data_dir">缓存目录</param>
+            <param name="developer">缓存目录</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.Init(System.String,System.String,System.String[0:,0:],System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.Collections.Generic.List{System.String},System.Int32,System.Action,System.Boolean)">
+            <summary>
+            初始并启动Chrome
+            </summary>
+            <param name="browser_path">Chrome路径</param>
+            <param name="user_data_dir">缓存目录</param>
+            <param name="useragent">UserAgent</param>
+            <param name="extension_paths">拓展程序路径集合</param>
+            <param name="language">语言1，比如 en_US</param>
+            <param name="language_ex">语言2，比如 en-US, en</param>
+            <param name="args">其他启动参数</param>
+            <param name="cmd_execute_timeout">命令执行超时时间</param>
+            <param name="browser_launched_action">浏览器启动成功回调</param>
+            <param name="developer">浏览器启动成功回调</param>
+            <param name="load_gte">浏览器启动成功回调</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.TimedDisposable(System.Int32)">
+            <summary>
+            执行多少分钟后关闭游览器
+            </summary>
+            <param name="time"></param>
+        </member>
+        <member name="M:ChromeController.Chrome.Dispose">
+            <summary>
+            关闭浏览器释放资源
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.GetBrowserPath">
+            <summary>
+            获取游览器缓存路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.Dispose(System.Int32)">
+            <summary>
+            关闭浏览器释放资源
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.TimeoutCheck">
+            <summary>
+            超时检测
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.GetCureentPtr(ChromeController.Models.WindowPtr,System.Boolean)">
+            <summary>
+            设置当前选中窗口的句柄
+            </summary>
+            <param name="wp"></param>
+            <param name="IsChanged"></param>
+        </member>
+        <member name="M:ChromeController.Chrome.StartDevToolsListener">
+            <summary>
+            开启监视
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.StopDevToolsListener">
+            <summary>
+            关闭监视
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.timer_HideDevTools_Tick(System.Object,System.EventArgs)">
+            <summary>
+            捕捉并隐藏DevTool窗体
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChromeController.Chrome.GetIP">
+            <summary>
+            获取IP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.LoadUrl(System.String,System.Boolean,System.Int32)">
+            <summary>
+            加载游览器链接
+            </summary>
+            <param name="url">url连接</param>
+            <param name="newWindow">是否新窗口打开</param>
+            <param name="WaitPageLoadTime">加载链接等待时间 默认30秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.LoopRunFunction(System.Func{System.Boolean},System.Int32,System.Int32)">
+            <summary>
+            循环执行功能，成功停止
+            </summary>
+            <param name="func">要执行的委托方法，带返回值bool</param>
+            <param name="LoopCount">循环次数</param>
+            <param name="IntervalTime">间隔时间（秒）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetTabUrls">
+            <summary>
+            获取当前游览器窗口中的所有打开的url链接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ResetTabUrls(System.String[])">
+            <summary>
+            根据URL刷新标题页面
+            </summary>
+            <param name="urls">URL标题组</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.SetCurrentTab(System.String,System.Boolean)">
+            <summary>
+            设置活动窗口为目标窗口
+            </summary>
+            <param name="url">目标窗口url标题</param>
+            <param name="IsNewWindow">是否使用新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.SetLastCurrentTab(System.Boolean)">
+            <summary>
+            设置活动窗口为末尾窗口活动
+            </summary>
+            <param name="IsNewWindow">是否使用新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.CloseTab(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            关闭指定的url标题窗口
+            </summary>
+            <param name="url">url标题</param>
+            <param name="closeOhter">关闭任意匹配url窗口</param>
+            <param name="IsNewWindow">是否新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.CloseEmptyTabs">
+            <summary>
+            关闭空白标题窗口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.CloseLastOpenTab(System.Boolean)">
+            <summary>
+            关闭末尾窗口
+            </summary>
+            <param name="IsNewWindow">是否使用新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetAllFrames">
+            <summary>
+            获取当前页面 的所有Iframe标签元素
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ExecuteJs(System.String,System.Boolean)">
+            <summary>
+            执行js代码 新接口 注意 findNa 为使用查询长期变量 请不要出现在js数据中
+            </summary>
+            <param name="js">js 代码</param>
+            <param name="allFrames">是否遍历所有iframe标签执行</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ExecuteJSFront(System.String,System.Int32)">
+            <summary>
+            窗口最高层级执行JS
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.FindControl(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            查找元素
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置 默认0</param>
+            <param name="allFrames">是否查询所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath元素查找方法</param>
+            <returns>true 为存在 false 不存在</returns>
+        </member>
+        <member name="M:ChromeController.Chrome.PageLoadWait(System.String,System.Int32,System.Boolean,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            循环等待元素
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置 默认0</param>
+            <param name="allFrames">是否查询所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath元素查找方法</param>
+            <param name="LoopCount">循环次数默认30次</param>
+            <param name="IntervalTime">循环每次间隔时间默认1秒</param>
+            <returns>true 为存在 false 不存在</returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetPageHtml(System.Boolean)">
+            <summary>
+            获取当前页面的html代码
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetPageTitle(System.Boolean)">
+            <summary>
+            获取当前页面的title
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetPageBodyHtml(System.Boolean)">
+            <summary>
+            获取当前页面的Body代码
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetPageUrl(System.Boolean)">
+            <summary>
+            获取当前页面的URL
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetSomeText(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            获取多个元素的属性值
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="property">属性值 默认value</param>
+            <param name="IsXpath">是否试用xpath坐标</param>
+            <param name="allFrames">是否搜索所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetElementAttribute(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            获取元素属性值
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="property">属性值 默认 value </param>
+            <param name="index">索引位 默认0</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ClickElementJs(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            元素点击事件 Js实现
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.MouseClickElement(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Int32,ChromeController.Models.BrowserResult)">
+            <summary>
+            鼠标点击元素
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置</param>
+            <param name="num">点击次数</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <param name="isRightClick">鼠标单击键默认左键 值为true时 单击右键事件</param>
+            <param name="scroll">偏移距离默认-150</param>
+            <param name="appendRect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.MousMoveElement(System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            鼠标点击元素
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置</param>
+            <param name="num">步长</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ElementTouchOperate(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            元素触摸事件 JS实现
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.MoveElementJs(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            移动元素 js 实现
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="x">移动水平距离</param>
+            <param name="y">移动垂直距离</param>
+            <param name="WaitTime">元素移动持续时间</param>
+            <param name="index">索引位置</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ElementScroll(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            以元素为准滑动页面
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="box">外层盒子坐标 默认html</param>
+            <param name="index">索引位置</param>
+            <param name="method">滑动方法 默认0 置顶；1居中；2置底</param>
+            <param name="shifting">偏移量 到达默认位置后加上偏移量距离 可为负数</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.PageScroll(System.Int32,System.Int32)">
+            <summary>
+            页面滚动
+            </summary>
+            <param name="x">滚动水平距离</param>
+            <param name="y">滚动垂直距离</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ElementOperate(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            元素触发事件 JS
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="eventName">事件名称</param>
+            <param name="index">是否所有iframe标签执行</param>
+            <param name="IsXpath">是否所有iframe标签执行</param>
+            <param name="allFrames">是否所有iframe标签执行</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.SetCookie(System.String)">
+            <summary>
+            设置 cookie
+            </summary>
+            <param name="json">cookie json格式字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetCookie(System.String)">
+            <summary>
+            获取当前游览器的所有cookie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetAllCookie">
+            <summary>
+            获取当前游览器的所有cookie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ClearCookies">
+            <summary>
+            清空游览器的cookie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.SetValue(System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            元素属性输入值
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="value">输入值</param>
+            <param name="property">元素输入值的属性名 默认 value </param>
+            <param name="index">元素索引</param>
+            <param name="IsRefresh">是否设置值后刷新该元素 默认false 不刷新</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.KeywordEmulationSpecialKeys(ChromeController.Models.SpecialKey,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            特殊字符键盘事件真实响应 注意此方法为调用系统底层事件 需要在外面加线程锁
+            </summary>
+            <param name="specialKey">特殊按键代号 enum 类型</param>
+            <param name="SendTimes">发生时间</param>
+            <param name="MinMilliseconds">最小发生时间 单位（微秒）</param>
+            <param name="MaxMilliseconds">最大发生时间 单位（微秒）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.KeywordEmulation(System.String,System.Int32,System.Int32)">
+            <summary>
+            键盘输入文本类型 注意此方法为调用系统底层事件 需要在外面加线程锁
+            </summary>
+            <param name="text">输入文本类容</param>
+            <param name="MinMilliseconds">最小发生时间 单位（微秒）</param>
+            <param name="MaxMilliseconds">最大发生时间 单位（微秒）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.KeywordEmulation(System.String)">
+            <summary>
+            键盘输入文本类型 注意此方法为调用系统底层事件 需要在外面加线程锁  此处不激活窗口
+            </summary>
+            <param name="text">输入文本类容</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.UploadFile(System.String,System.String)">
+            <summary>
+            上传文件 需要先点开上传文件对话框在调用此方法  
+            </summary>
+            <param name="FilePath">文件路径</param>
+            <param name="OpenName">上传文件对话框 窗口名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetRect(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            获取元素在屏幕上的位置
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="allFrames">是否查找所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetChromeWindowImage(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            获取游览器当前窗口截图
+            </summary>
+            <param name="filePath">图片保存路径</param>
+            <param name="format">图片格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetImage(System.String,System.String,System.Drawing.Imaging.ImageFormat,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            将元素截图保存到本地
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="filePath">图片保存路径</param>
+            <param name="format">图片格式</param>
+            <param name="index">元素索引</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.SetLocalStorage(System.String,System.String)">
+            <summary>
+            设置LocalStorage值
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.GetLocalStorage(System.String)">
+            <summary>
+            获取LocalStorage值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.ActiveBrowser">
+            <summary>
+            激活置顶当前游览器窗口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.SetContentSettings(ChromeController.Commands.ContentSettingsType,ChromeController.Commands.ContentSettingsValue)">
+            <summary>
+            弹窗关闭
+            </summary>
+            <param name="type">关闭类型</param>
+            <param name="value">关闭值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Chrome.Input(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            输入元素 js事件响应 新方法封装
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="value">输入值</param>
+            <param name="index">索引位置</param>
+            <param name="IsXpath">是否使用Xpath标签</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+        </member>
+        <member name="M:ChromeController.Chrome.Log(System.String)">
+            <summary>
+            日志记录方法 此方法调用有效前提 是先调用 启用日志记录方法 EnableLog()
+            </summary>
+            <param name="message">日志内容</param>
+        </member>
+        <member name="M:ChromeController.Chrome.CheckWindow(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="CheckTime"></param>
+            <param name="CheckCloseCount"></param>
+        </member>
+        <member name="M:ChromeController.Chrome.GetWindowHandleByProcessId(System.Int32)">
+            <summary>
+            通过进程 ID 获取窗口句柄
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.CheckAllWindow(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="CheckTime"></param>
+            <param name="CheckCloseCount"></param>
+        </member>
+        <member name="M:ChromeController.Chrome.StopCheckWindow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChromeController.Chrome.CheckWindowInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ChromeController.Chrome.LoadV3Extension">
+            <summary>
+            加载V3版本的插件
+            </summary>
+        </member>
+        <member name="T:ChromeController.Models.SpecialKey">
+            <summary>
+            特殊按键
+            </summary>
+        </member>
+        <member name="P:ChromeController.Models.Result.State">
+            <summary>
+            结果状态  200正常   500错误   408超时
+            </summary>
+        </member>
+        <member name="F:ChromeController.Models.Tool.charSource">
+            <summary>
+            字母和数字的字符集合
+            </summary>
+        </member>
+        <member name="F:ChromeController.Models.Tool.SingleQuotationMarks">
+            <summary>
+            单引号转义
+            </summary>
+        </member>
+        <member name="M:ChromeController.Models.Tool.SaveImage(System.String,ChromeController.Models.BrowserRect,System.String)">
+            <summary>
+            保存图片
+            </summary>
+            <param name="base64String"></param>
+            <param name="imageRect"></param>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.Cut(System.Drawing.Bitmap,System.Drawing.Rectangle)">
+            <summary>
+            截取图片
+            </summary>
+            <param name="bimage"></param>
+            <param name="rectangle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Models.Tool.GetRandomSeed">
+            <summary>
+            获取随机种子
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Models.Tool.GetProcessIdByName(System.String)">
+            <summary>
+            根据名称获取进程id集合
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Models.Tool.GetProcessIdByName(System.String,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            根据名称获取新增加的进程id集合
+            </summary>
+            <param name="name"></param>
+            <param name="except_Ids"></param>
+            <param name="newids"></param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.RemoveNoExistIds(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            移除不存在的进程id
+            </summary>
+            <param name="ids"></param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.CopyDirectory(System.String,System.String)">
+            <summary>
+            拷贝整个源目录到指定目录
+            </summary>
+            <param name="varFromDirectory">源目录</param>
+            <param name="varToDirectory">指定目录</param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.CopyFilesToDirectory(System.String,System.String)">
+            <summary>
+            拷贝源目录下的所有文件/文件夹到指定目录
+            </summary>
+            <param name="varFromDirectory">源目录</param>
+            <param name="varToDirectory">指定目录</param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.CopyFilesToDirectory(System.String[],System.String)">
+            <summary>
+            拷贝文件/文件夹到指定目录
+            </summary>
+            <param name="fileEntries">文件/文件夹列表</param>
+            <param name="varToDirectory">指定目录</param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.DeleteOlderDirectories(System.String,System.Int32,System.String)">
+            <summary>
+            删除指定目录下的文件夹。文件夹的名称必须是日期格式
+            </summary>
+            <param name="targetDirectory">指定目录路径</param>
+            <param name="daysBeforeToday">要删除当前日期的多少天之前的文件夹</param>
+            <param name="dateFormat">日期格式</param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.SetYesCaptchaConfig(System.String,System.String)">
+            <summary>
+            配置YesCaptcha插件
+            </summary>
+            <param name="ExtensionPath">插件路径</param>
+            <param name="ApiKey">密钥</param>
+        </member>
+        <member name="M:ChromeController.Models.Tool.Set2CaptchaConfig(System.String,System.String)">
+            <summary>
+            配置2Captcha插件
+            </summary>
+            <param name="ExtensionPath">插件路径</param>
+            <param name="ApiKey">密钥</param>
+        </member>
+        <member name="T:ChromeController.Models.BrowserResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChromeController.Models.ILoger.InitLog">
+            <summary>
+            初始化或者清空之前的日志记录变量
+            编写模板的时候不需要调用此方法
+            </summary>
+        </member>
+        <member name="M:ChromeController.Models.ILoger.AppendLog(System.String)">
+            <summary>
+            追加日志
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:ChromeController.Models.ILoger.ReadLog">
+            <summary>
+            读取日志
+            编写模板的时候不需要调用此方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ChromeController.Extension.ControllerExtensionHelperV3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChromeController.Extension.ControllerExtensionHelperV3.#ctor(ChromeController.Extension.Models.ExtensionOption)">
+            <summary>
+            
+            </summary>
+            <param name="option"></param>
+        </member>
+        <member name="F:ChromeController.Extension.ControllerExtensionHelperV3.manifestV3">
+            <summary>
+            插件配置
+            </summary>
+        </member>
+        <member name="F:ChromeController.Extension.ControllerExtensionHelperV3.theOption">
+            <summary>
+            插件选项信息
+            </summary>
+        </member>
+        <member name="F:ChromeController.Extension.ControllerExtensionHelperV3.theFolder">
+            <summary>
+            插件生成目录
+            </summary>
+        </member>
+        <member name="F:ChromeController.Extension.ControllerExtensionHelperV3.DirectoryOfExtensions">
+            <summary>
+            插件存储父级路径，具体路径还要添加日期和guid名称
+            </summary>
+        </member>
+        <member name="M:ChromeController.Extension.ControllerExtensionHelperV3.BuildExtension(System.String,System.String@,System.String@)">
+            <summary>
+            创建插件
+            </summary>
+            <param name="extension_name">插件名称</param>
+            <param name="extension_path">返回的插件路径</param>
+            <param name="error">返回的错误信息</param>  
+            <returns></returns>
+        </member>
+        <member name="T:ChromeController.Extension.Models.ExtensionOption">
+            <summary>
+            插件创建参数和选项
+            </summary>
+        </member>
+        <member name="P:ChromeController.Extension.Models.ExtensionOption.PortForCommand">
+            <summary>
+            直接控制chrome操作的通信端口
+            </summary>
+        </member>
+        <member name="P:ChromeController.Extension.Models.ExtensionOption.ShowBottomInfos">
+            <summary>
+            底部是否显示信息栏
+            </summary> 
+        </member>
+        <member name="P:ChromeController.Extension.Models.ExtensionOption.BottomInfos">
+            <summary>
+            要显示的信息内容
+            </summary> 
+        </member>
+        <member name="T:ChromeController.Extension.ControllerExtensionHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChromeController.Extension.ControllerExtensionHelper.#ctor(ChromeController.Extension.Models.ExtensionOption)">
+            <summary>
+            
+            </summary>
+            <param name="option"></param>
+        </member>
+        <member name="F:ChromeController.Extension.ControllerExtensionHelper.theOption">
+            <summary>
+            插件选项信息
+            </summary>
+        </member>
+        <member name="F:ChromeController.Extension.ControllerExtensionHelper.theFolder">
+            <summary>
+            插件生成目录
+            </summary>
+        </member>
+        <member name="F:ChromeController.Extension.ControllerExtensionHelper.DirectoryOfExtensions">
+            <summary>
+            插件存储父级路径，具体路径还要添加日期和guid名称
+            </summary>
+        </member>
+        <member name="M:ChromeController.Extension.ControllerExtensionHelper.BuildExtension(System.String,System.String@,System.String@)">
+            <summary>
+            创建插件
+            </summary>
+            <param name="extension_name">插件名称</param>
+            <param name="extension_path">返回的插件路径</param>
+            <param name="error">返回的错误信息</param>  
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Logs.GetExceptionMsg(System.Exception,System.String)">
+            <summary>
+            生成自定义异常消息
+            </summary>
+            <param name="ex">异常对象</param>
+            <param name="backStr">备用异常消息：当ex为null时有效</param>
+            <returns>异常字符串文本</returns>
+        </member>
+        <member name="T:ChromeController.Utils.LockHelper">
+            <summary>
+            全局文件锁
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_HIDE">
+            <summary>
+            隐藏窗口并激活其他窗口
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOWNORMAL">
+            <summary>
+            激活并显示一个窗口。如果窗口被最小化或最大化，系统将其恢复到原来的尺寸和大小。应用程序在第一次显示窗口的时候应该指定此标志
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOWMINIMIZED">
+            <summary>
+            激活窗口并将其最小化
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOWMAXIMIZED">
+            <summary>
+            激活窗口并将其最大化
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOWNOACTIVATE">
+            <summary>
+            以窗口最近一次的大小和状态显示窗口。此值与SW_SHOWNORMAL相似，只是窗口没有被激活
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOW">
+            <summary>
+            在窗口原来的位置以原来的尺寸激活和显示窗口
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_MINIMIZE">
+            <summary>
+            最小化指定的窗口并且激活在Z序中的下一个顶层窗口
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOWMINNOACTIVE">
+            <summary>
+            最小化的方式显示窗口，此值与SW_SHOWMINIMIZED相似，只是窗口没有被激活
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOWNA">
+            <summary>
+            以窗口原来的状态显示窗口。此值与SW_SHOW相似，只是窗口没有被激活
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_RESTORE">
+            <summary>
+            激活并显示窗口。如果窗口最小化或最大化，则系统将窗口恢复到原来的尺寸和位置。在恢复最小化窗口时，应用程序应该指定这个标志
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_SHOWDEFAULT">
+            <summary>
+            依据在STARTUPINFO结构中指定的SW_FLAG标志设定显示状态，STARTUPINFO 结构是由启动应用程序的程序传递给CreateProcess函数的
+            </summary>
+        </member>
+        <member name="F:ChromeController.Utils.Win32Control.SW_FORCEMINIMIZE">
+            <summary>
+            最小化窗口，即使拥有窗口的线程被挂起也会最小化。在从其他线程最小化窗口时才使用这个参数
+            </summary>
+        </member>
+        <member name="T:ChromeController.Utils.JsonHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChromeController.Utils.JsonHelper.JsonSerializeToFile``1(``0,System.String,System.String@)">
+            <summary>
+            Json序列化保存到文件
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="path"></param>
+            <param name="err"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Utils.JsonHelper.JsonSerializeToString``1(``0,System.String@,System.String@)">
+            <summary>
+            Json序列化保存到字符串
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="json"></param>
+            <param name="err"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Utils.JsonHelper.JsonSerializeToString(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Utils.JsonHelper.JsonDeserializeFromFile``1(System.String,System.String@)">
+            <summary>
+            Json从文件反序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="path"></param>
+            <param name="err"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Utils.JsonHelper.JsonDeserializeFromString``1(System.String,System.String@)">
+            <summary>
+            Json从字符串反序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <param name="err"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Utils.JsonHelper.GetJsonCookieValue(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="cookie"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ChromeController.Utils.PreferencesHelper">
+            <summary>
+            Preferences文件处理
+            </summary>
+        </member>
+        <member name="M:ChromeController.Utils.PreferencesHelper.#ctor(System.String)">
+            <summary>
+            Preferences文件处理
+            </summary>
+            <param name="userDataDir"></param> 
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:ChromeController.Utils.PreferencesHelper.AddOrEditPreferences(System.Func{System.String,System.String},System.Func{System.String})">
+            <summary>
+            添加或修改配置
+            </summary>
+            <param name="funcEdit">修改配置的委托方法</param>
+            <param name="funcAdd">添加配置的委托方法</param>
+        </member>
+        <member name="M:ChromeController.Utils.PreferencesHelper.ClosePrivacyAdsSettings">
+            <summary>
+            关闭增强广告隐私设置
+            </summary>
+        </member>
+        <member name="M:ChromeController.Utils.PreferencesHelper.ChangeExitType">
+            <summary>
+            修改浏览器的退出状态
+            </summary>
+        </member>
+        <member name="M:ChromeController.Utils.PreferencesHelper.SetChromeLanguage(System.Boolean,System.String)">
+            <summary>
+            修改chrome的语言
+            </summary>
+            <param name="set_language"></param>
+            <param name="language"></param>
+        </member>
+        <member name="M:ChromeController.Utils.PreferencesHelper.SetExtensionsIcon(System.String)">
+            <summary>
+            修改拓展图标设置
+            </summary> 
+            <param name="eid"></param>
+        </member>
+        <member name="M:ChromeController.Utils.CommonTools.DeleteDirectory(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            删除目录
+            </summary>
+            <param name="directoryPath"></param>
+            <param name="recursive"></param>
+            <param name="create"></param>
+            <param name="hidden"></param>
+        </member>
+        <member name="M:ChromeController.Utils.CommonTools.GetExtensions(System.Collections.Generic.List{System.String},System.Boolean,System.Int32,System.String[0:,0:],System.Boolean,System.String@,System.String@,System.String@)">
+            <summary>
+            获取LoadExtension参数
+            </summary>
+            <param name="extension_paths"></param>
+            <param name="load_gte"></param>
+            <param name="port"></param>
+            <param name="developerStr"></param>
+            <param name="loadV3Extension"></param>
+            <param name="loadExtensionStr"></param>
+            <param name="controlExtensionPath"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ChromeController.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性，对
+              使用此强类型资源类的所有资源查找执行重写。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.bottominfobar">
+             <summary>
+               查找类似 var style = document.createElement(&apos;style&apos;);
+            style.innerText = &quot;#pannel{transition:transform .3s ease}#pannel[data-pannel=open]&gt;#pannelAction&gt;svg{transform:rotate(90deg)}#pannel[data-pannel=close]{transform:translateY(100%)}#pannel[data-pannel=close]&gt;#pannelAction&gt;svg{transform:rotate(270deg)}#pannelAction{position:absolute;top:-28px;right:0;display:flex;align-items:center;justify-content:center;padding:6px 10px;font-size:24px;background-color:rgba(0,0,0,.5);cursor:pointer}#pannelAction&gt;svg{width:16px;heigh [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.content">
+             <summary>
+               查找类似 function appendScript(link) {
+              var script = document.createElement(&quot;script&quot;);
+              script.setAttribute(&quot;src&quot;, chrome.extension.getURL(link));
+              script.onload = function () {
+                this.remove();
+              };
+              (document.head || document.documentElement).appendChild(script);
+            }
+            
+            function excuteScript(content) {
+              var script = document.createElement(&quot;script&quot;);
+              script.text = content;
+              script.onload = function () {
+                this.remove();
+              };
+              (document.head || document.documentElement).appendChild(script);
+             [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.icon_128">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.icon_16">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.icon_48">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.js_bottominfobar">
+             <summary>
+               查找类似 var style = document.createElement(&apos;style&apos;);
+            style.innerText = &quot;#pannel{transition:transform .3s ease}#pannel[data-pannel=open]&gt;#pannelAction&gt;svg{transform:rotate(90deg)}#pannel[data-pannel=close]{transform:translateY(100%)}#pannel[data-pannel=close]&gt;#pannelAction&gt;svg{transform:rotate(270deg)}#pannelAction{position:absolute;top:-28px;right:0;display:flex;align-items:center;justify-content:center;padding:6px 10px;font-size:24px;background-color:rgba(0,0,0,.5);cursor:pointer}#pannelAction&gt;svg{width:16px;heigh [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.js_commands">
+            <summary>
+              查找类似 function cookieForCreationFromFullCookie(fullCookie) {
+               var newCookie = {};
+               //If no real url is available use: &quot;https://&quot; : &quot;http://&quot; + domain + path
+               if (fullCookie.domain.indexOf(&apos;.&apos;) == 0) {
+                   fullCookie.domain = fullCookie.domain.substring(1);
+               }
+               newCookie.url = &quot;http&quot; + ((fullCookie.secure) ? &quot;s&quot; : &quot;&quot;) + &quot;://&quot; + fullCookie.domain + fullCookie.path;
+               newCookie.name = fullCookie.name;
+               newCookie.value = fullCookie.value;
+               if (!fullCookie.hostOnly)
+                   newCook [字符串的其余部分被截断]&quot;; 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.js_content">
+             <summary>
+               查找类似 function appendScript(link) {
+              var script = document.createElement(&quot;script&quot;);
+              script.setAttribute(&quot;src&quot;, chrome.extension.getURL(link));
+              script.onload = function () {
+                this.remove();
+              };
+              (document.head || document.documentElement).appendChild(script);
+            }
+            
+            function excuteScript(content) {
+              var script = document.createElement(&quot;script&quot;);
+              script.text = content;
+              script.onload = function () {
+                this.remove();
+              };
+              (document.head || document.documentElement).appendChild(script);
+             [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.js_requestNew">
+             <summary>
+               查找类似 function requestNew(option) {
+                // 1. 首先简单验证传进来的参数是否合法
+                if (Object.prototype.toString.call(option) !== &quot;[object Object]&quot;)
+                    return undefined;
+                // 2. 对参数容错处理
+                option.method = option.method ? option.method.toUpperCase() : &quot;GET&quot;; // 默认 GET 请求
+                option.data = option.data || {};
+                option.type = option.type || &quot;json&quot;;
+                option.contentType =
+                    option.contentType || &quot;application/x-www-form-urlencoded&quot;;
+            
+                // 3. 如果是 GET 请求，需要处理 data 里的数据并且以一定的规则拼接到 url 后
+                if (option.meth [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.js_worker">
+             <summary>
+               查找类似 
+            async function fetchPost(data, callback) {
+                try {
+                    const response = await fetch(&quot;http://127.0.0.1:[PORT]/cmd&quot;, {
+                        method: &apos;POST&apos;,
+                        headers: {
+                            &apos;Content-Type&apos;: &apos;application/json&apos;,
+                        },
+                        body: JSON.stringify(data),
+                    });
+                    if (response.ok) {
+                        const jsonData = await response.json();
+                        console.log(&quot;从本地服务器获取的数据:&quot;, jsonData);
+                        callback({ status: response.status, response: jsonData });
+                [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.networking">
+            <summary>
+              查找类似 xhr_post_networking = function (data, callback) {
+               var xhr = new XMLHttpRequest();
+               xhr.onreadystatechange = function () {
+                   if (xhr.readyState != 4) {
+                       return;
+                   }
+                   if (xhr.status == 200) {
+                       callback({ status: xhr.status, response: JSON.parse(xhr.responseText) });
+                   } else {
+                       callback({ status: xhr.status, response: xhr.responseText });
+                   }
+               };
+               xhr.open(&quot;POST&quot;, &quot;http://127.0.0.1:[PORT]/cmd&quot;, true);
+               xhr.send(data); [字符串的其余部分被截断]&quot;; 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ChromeController.Properties.Resources.requestNew">
+             <summary>
+               查找类似 function requestNew(option) {
+                // 1. 首先简单验证传进来的参数是否合法
+                if (Object.prototype.toString.call(option) !== &quot;[object Object]&quot;)
+                    return undefined;
+                // 2. 对参数容错处理
+                option.method = option.method ? option.method.toUpperCase() : &quot;GET&quot;; // 默认 GET 请求
+                option.data = option.data || {};
+                option.type = option.type || &quot;json&quot;;
+                option.contentType =
+                    option.contentType || &quot;application/x-www-form-urlencoded&quot;;
+            
+                // 3. 如果是 GET 请求，需要处理 data 里的数据并且以一定的规则拼接到 url 后
+                if (option.meth [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.SetWindowSize(System.Int32)">
+            <summary>
+            设置窗体大小
+            </summary>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.HideWindow(System.Int32)">
+            <summary>
+            显示隐藏窗口 0 隐藏 9 恢复
+            </summary>
+            <param name="p"></param>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.LoadUrl(System.String,System.Boolean,System.Int32)">
+            <summary>
+            加载游览器链接
+            </summary>
+            <param name="url">url连接</param>
+            <param name="newWindow">是否新窗口打开</param>
+            <param name="WaitPageLoadTime">加载链接等待时间 默认30秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.LoopRunFunction(System.Func{System.Boolean},System.Int32,System.Int32)">
+            <summary>
+            循环执行功能，成功停止
+            </summary>
+            <param name="func">要执行的委托方法，带返回值bool</param>
+            <param name="LoopCount">循环次数</param>
+            <param name="IntervalTime">间隔时间（秒）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetTabUrls">
+            <summary>
+            获取当前游览器窗口中的所有打开的url链接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ResetTabUrls(System.String[])">
+            <summary>
+            根据URL刷新标题页面
+            </summary>
+            <param name="urls">URL标题组</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.SetCurrentTab(System.String,System.Boolean)">
+            <summary>
+            设置活动窗口为目标窗口
+            </summary>
+            <param name="url">目标窗口url标题</param>
+            <param name="IsNewWindow">是否使用新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.SetLastCurrentTab(System.Boolean)">
+            <summary>
+            设置活动窗口为末尾窗口活动
+            </summary>
+            <param name="IsNewWindow">是否使用新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.CloseTab(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            关闭指定的url标题窗口
+            </summary>
+            <param name="url">url标题</param>
+            <param name="closeOhter">关闭任意匹配url窗口</param>
+            <param name="IsNewWindow">是否新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.CloseEmptyTabs">
+            <summary>
+            关闭空白标题窗口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.CloseLastOpenTab(System.Boolean)">
+            <summary>
+            关闭末尾窗口
+            </summary>
+            <param name="IsNewWindow">是否使用新窗口</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetAllFrames">
+            <summary>
+            获取当前页面 的所有Iframe标签元素
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ExecuteJs(System.String,System.Boolean)">
+            <summary>
+            执行js代码 新接口 注意 findNa 为使用查询长期变量 请不要出现在js数据中
+            </summary>
+            <param name="js">js 代码</param>
+            <param name="allFrames">是否遍历所有iframe标签执行</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ExecuteJSFront(System.String,System.Int32)">
+            <summary>
+            窗口最高层级执行JS
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.FindControl(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            查找元素
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置 默认0</param>
+            <param name="allFrames">是否查询所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath元素查找方法</param>
+            <returns>true 为存在 false 不存在</returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.PageLoadWait(System.String,System.Int32,System.Boolean,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            循环等待元素
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置 默认0</param>
+            <param name="allFrames">是否查询所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath元素查找方法</param>
+            <param name="LoopCount">循环次数默认30次</param>
+            <param name="IntervalTime">循环每次间隔时间默认1秒</param>
+            <returns>true 为存在 false 不存在</returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetPageHtml(System.Boolean)">
+            <summary>
+            获取当前页面的html代码
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetPageTitle(System.Boolean)">
+            <summary>
+            获取当前页面的title
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetPageBodyHtml(System.Boolean)">
+            <summary>
+            获取当前页面的Body代码
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetPageUrl(System.Boolean)">
+            <summary>
+            获取当前页面的URL
+            </summary>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetSomeText(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            获取多个元素的属性值
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="property">属性值 默认value</param>
+            <param name="IsXpath">是否试用xpath坐标</param>
+            <param name="allFrames">是否搜索所有iframe标签</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetElementAttribute(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            获取元素属性值
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="property">属性值 默认 value </param>
+            <param name="index">索引位 默认0</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ClickElementJs(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            元素点击事件 Js实现
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.MouseClickElement(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Int32,ChromeController.Models.BrowserResult)">
+            <summary>
+            鼠标点击元素
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置</param>
+            <param name="num">点击次数</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <param name="isRightClick">鼠标单击键默认左键 值为true时 单击右键事件</param>
+            <param name="scroll">偏移距离默认-150</param>
+            <param name="appendRect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ElementTouchOperate(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            元素触摸事件 JS实现
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="index">索引位置</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.MoveElementJs(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            移动元素 js 实现
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="x">移动水平距离</param>
+            <param name="y">移动垂直距离</param>
+            <param name="WaitTime">元素移动持续时间</param>
+            <param name="index">索引位置</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.MousMoveElement(System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="selector"></param>
+            <param name="index"></param>
+            <param name="x"></param>
+            <param name="num"></param>
+            <param name="allFrames"></param>
+            <param name="IsXpath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ElementScroll(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            以元素为准滑动页面
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="box">外层盒子坐标 默认html</param>
+            <param name="index">索引位置</param>
+            <param name="method">滑动方法 默认0 置顶；1居中；2置底</param>
+            <param name="shifting">偏移量 到达默认位置后加上偏移量距离 可为负数</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.PageScroll(System.Int32,System.Int32)">
+            <summary>
+            页面滚动
+            </summary>
+            <param name="x">滚动水平距离</param>
+            <param name="y">滚动垂直距离</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ElementOperate(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            元素触发事件 JS
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="eventName">事件名称</param>
+            <param name="allFrames">是否所有iframe标签执行</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.SetCookie(System.String)">
+            <summary>
+            设置 cookie
+            </summary>
+            <param name="json">cookie json格式字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetCookie(System.String)">
+            <summary>
+            获取指定网站的cookie
+            </summary>
+            <param name="url">获取网站的url</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetAllCookie">
+            <summary>
+            获取当前游览器的所有cookie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ClearCookies">
+            <summary>
+            清空游览器的cookie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.SetValue(System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            元素属性输入值
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="value">输入值</param>
+            <param name="property">元素输入值的属性名 默认 value </param>
+            <param name="index">元素索引</param>
+            <param name="IsRefresh">是否设置值后刷新该元素 默认false 不刷新</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.KeywordEmulationSpecialKeys(ChromeController.Models.SpecialKey,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            特殊字符键盘事件真实响应 注意此方法为调用系统底层事件 需要在外面加线程锁
+            </summary>
+            <param name="specialKey">特殊按键代号 enum 类型</param>
+            <param name="SendTimes">发生时间</param>
+            <param name="MinMilliseconds">最小发生时间 单位（微秒）</param>
+            <param name="MaxMilliseconds">最大发生时间 单位（微秒）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.KeywordEmulation(System.String,System.Int32,System.Int32)">
+            <summary>
+            键盘输入文本类型 注意此方法为调用系统底层事件 需要在外面加线程锁
+            </summary>
+            <param name="text">输入文本类容</param>
+            <param name="MinMilliseconds">最小发生时间 单位（微秒）</param>
+            <param name="MaxMilliseconds">最大发生时间 单位（微秒）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.KeywordEmulation(System.String)">
+            <summary>
+            键盘输入文本类型 注意此方法为调用系统底层事件 需要在外面加线程锁  此处不激活窗口
+            </summary>
+            <param name="text">输入文本类容</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.UploadFile(System.String,System.String)">
+            <summary>
+            上传文件 需要先点开上传文件对话框在调用此方法  
+            </summary>
+            <param name="FilePath">文件路径</param>
+            <param name="OpenName">上传文件对话框 窗口名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetRect(System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            获取元素位置
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="allFrames">是否查找所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetChromeWindowImage(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            获取游览器当前窗口截图
+            </summary>
+            <param name="filePath">图片保存路径</param>
+            <param name="format">图片格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetImage(System.String,System.String,System.Drawing.Imaging.ImageFormat,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            将元素截图保存到本地
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="filePath">图片保存路径</param>
+            <param name="format">图片格式</param>
+            <param name="index">元素索引</param>
+            <param name="allFrames">是否包含所有iframe标签</param>
+            <param name="IsXpath">是否使用xpath坐标</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.SetLocalStorage(System.String,System.String)">
+            <summary>
+            设置LocalStorage值
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetLocalStorage(System.String)">
+            <summary>
+            获取LocalStorage值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ActiveBrowser">
+            <summary>
+            激活置顶当前游览器窗口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.SetContentSettings(ChromeController.Commands.ContentSettingsType,ChromeController.Commands.ContentSettingsValue)">
+            <summary>
+            弹窗关闭
+            </summary>
+            <param name="type">关闭类型</param>
+            <param name="value">关闭值</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.Input(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            输入元素 js事件响应 新方法封装
+            </summary>
+            <param name="selector">元素坐标</param>
+            <param name="value">输入值</param>
+            <param name="index">索引位置</param>
+            <param name="IsXpath">xpath 路径</param>
+            <param name="allFrames">所有iframe 标签</param>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.InitLog">
+            <summary>
+             初始化日志
+             </summary>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.AppendLog(System.String)">
+            <summary>
+            添加日志
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.ReadLog">
+            <summary>
+             将日志写入到本地文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.Dispose">
+            <summary>
+            关闭游览器
+            </summary>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.Dispose(System.Int32)">
+            <summary>
+            释放游览器资源
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.CheckWindow(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="CheckTime"></param>
+            <param name="CheckCloseCount"></param>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.StopCheckWindow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.TimedDisposable(System.Int32)">
+            <summary>
+            执行多少分钟后关闭游览器
+            </summary>
+            <param name="time"></param>
+        </member>
+        <member name="M:ChromeController.Service.IBrowser.GetBrowserPath">
+            <summary>
+            获取游览器缓存路径
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

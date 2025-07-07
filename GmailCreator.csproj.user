@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ShowAllFiles</ProjectView>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>--BrowserPath="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" --UserDataDir="./test" --PhoneKey="xxx" --UserName="xxx" --Password="xxx" --FirstName="shu" --LastName="li" --Gender=1 --Birthday="1997-04-01" --RecoveryEmail="xxx%40gmail.com"</StartArguments>
+  </PropertyGroup>
+</Project>
